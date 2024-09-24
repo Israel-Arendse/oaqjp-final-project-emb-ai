@@ -20,11 +20,11 @@ def emotion_detector(text_to_analyze):
     formatted_response = json.loads(response.text)
 
     # Extract the emotions from the dictionary
-    anger_score = formatted_response['documentSentiment']['anger']
-    disgust_score = formatted_response['documentSentiment']['disgust']
-    fear_score = formatted_response['documentSentiment']['fear']
-    joy_score = formatted_response['documentSentiment']['joy']
-    sadness_score = formatted_response['documentSentiment']['sadness']
+    anger_score = formatted_response['documentEmotion']['anger']
+    disgust_score = formatted_response['documentEmotion']['disgust']
+    fear_score = formatted_response['documentEmotion']['fear']
+    joy_score = formatted_response['documentEmotion']['joy']
+    sadness_score = formatted_response['documentEmotion']['sadness']
     
     # Return the response text from the API
     return {'anger': anger_score, 
