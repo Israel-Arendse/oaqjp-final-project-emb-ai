@@ -10,7 +10,7 @@ def emotion_detector(text_to_analyze):
     # Create the dictionary 'textobj' with the text to be analyzed under the variable 'text'
     textobj = { "raw_document": { "text": text_to_analyze} }
     # Send a POST request to the API with the text and headers
-    response = requests.post.(url, headers=header, json = textobj)
+    response = requests.post(url, headers=header, json = textobj)
     # Return the response text from the API
     return response.text
 
