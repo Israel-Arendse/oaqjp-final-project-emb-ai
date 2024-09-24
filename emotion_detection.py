@@ -1,4 +1,8 @@
-# import the request library to handle HTTP requirements
+
+# Import the JSON library
+import json 
+
+# import the request library to handle HTTP requests
 import requests 
 
 # Define the function 'emotion_detector' to take the string input (text_to_analyse)
