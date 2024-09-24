@@ -11,6 +11,22 @@ def emotion_detector(text_to_analyze):
     textobj = { "raw_document": { "text": text_to_analyze} }
     # Send a POST request to the API with the text and headers
     response = requests.post(url, headers=header, json = textobj)
+
+    # Parse the JSON response
+    formatted_response = json.loads(response.text)
+
+    # Extract the emotions from the dictionary
+    anger_score = formatted_response['documentSentiment']['anger']
+    disgust_score = formatted_response['documentSentiment']['disgust']
+    fear_score = formatted_response['documentSentiment']['fear']
+    joy_score = formatted_response['documentSentiment']['joy']
+    sadness_score = formatted_response['documentSentiment']['sadness']
+    
     # Return the response text from the API
-    return response.text
+    return {'anger': anger_score, 
+            'disgust': disgust_score,
+            'fear': fear_score,
+            'sadness': sadness_score,
+            'dominant_emotion_': '<name_of_the_dominant_emotion>'
+           }
 
