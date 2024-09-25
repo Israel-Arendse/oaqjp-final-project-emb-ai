@@ -23,8 +23,8 @@ def emotion_detector(text_to_analyze):
     # Extract the 'documentEmotion' if it exists
     document_emotion = formatted_response.get('documentEmotion')
     if document_emotion is None:
-       print("Key 'documentEmotion' is not found in the response.")
-       return {}
+        print("Key 'documentEmotion' is not found in the response.")
+        return {}
     else:
         # Extract the emotions from the dictionary
         anger_score = document_emotion.get('anger', 0)
