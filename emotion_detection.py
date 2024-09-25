@@ -20,30 +20,36 @@ def emotion_detector(text_to_analyze):
     formatted_response = json.loads(response.text)
     print(formatted_response) # Print the entire response
     
-    # Extract the emotions from the dictionary
-    anger_score = document_emotion.get('anger', 0)
-    disgust_score = document_emotion.get('disgust', 0)
-    fear_score = document_emotion.get('fear', 0)
-    joy_score = document_emotion.get('joy', 0)
-    sadness_score = document_emotion.get('sadness', 0)
+    # Extract the emotions from the nested structure
+    if 'emotionPredictions' in formatted_response and len(formatted_response['emotionPredictions']) > 0:
+        emotions = formatted_response['emotionPredictions'][0]['emotion']
+        anger_score = emotions.get('anger', 0)
+        disgust_score = emotions.get('disgust', 0)
+        fear_score = emotions.get('fear', 0)
+        joy_score = emotions.get('joy', 0)
+        sadness_score = emotions.get('sadness', 0)
 
-    # Determine the dominant emotion
-    # by returning the highest value
-    emotions = {
-        'anger': anger_score,
-        'disgust': digust_score,
-        'fear': fear_score,
-        'joy': joy_score,
-        'sadness': sadness_score
-    }
-    dominant_emotion = max(emotions, key=emotions.get)
-
-    # Return the response text from the API
-    return {
-        'anger': anger_score, 
-        'disgust': disgust_score,
-        'fear': fear_score,
-        'sadness': sadness_score,
-        'dominant_emotion_': dominant_emotion
-    }
+        # Determine the dominant emotion
+        emotion_scores = {
+            'anger': anger_score,
+            'disgust': disgust_score,
+            'fear': fear_score,
+            'joy': joy_score,
+            'sadness': sadness_score
+        }
+        dominant_emotion = max(emotion_scores, key=emotion_scores.get)
+        
+        # Return the formatted response
+        return {
+            'anger': anger_score, 
+            'disgust': disgust_score,
+            'fear': fear_score,
+            'joy': joy_score,
+            'sadness': sadness_score,
+            'dominant_emotion': dominant_emotion
+        }
+      # If there are no emotion predictions in the response.
+    else:
+        print("No emotion predictions found in the response.")
+        return {}
     
