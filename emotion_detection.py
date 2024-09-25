@@ -18,8 +18,7 @@ def emotion_detector(text_to_analyze):
 
     # Parse the JSON response
     formatted_response = json.loads(response.text)
-    print(formatted_response) # Print the entire response
-    
+
     # Extract the emotions from the nested structure
     if 'emotionPredictions' in formatted_response and len(formatted_response['emotionPredictions']) > 0:
         emotions = formatted_response['emotionPredictions'][0]['emotion']
