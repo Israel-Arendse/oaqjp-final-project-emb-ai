@@ -20,36 +20,30 @@ def emotion_detector(text_to_analyze):
     formatted_response = json.loads(response.text)
     print(formatted_response) # Print the entire response
     
-    # Extract the 'documentEmotion' if it exists
-    document_emotion = formatted_response.get('documentEmotion')
-    if document_emotion is None:
-        print("Key 'documentEmotion' is not found in the response.")
-        return {}
-    else:
-        # Extract the emotions from the dictionary
-        anger_score = document_emotion.get('anger', 0)
-        disgust_score = document_emotion.get('disgust', 0)
-        fear_score = document_emotion.get('fear', 0)
-        joy_score = document_emotion.get('joy', 0)
-        sadness_score = document_emotion.get('sadness', 0)
+    # Extract the emotions from the dictionary
+    anger_score = document_emotion.get('anger', 0)
+    disgust_score = document_emotion.get('disgust', 0)
+    fear_score = document_emotion.get('fear', 0)
+    joy_score = document_emotion.get('joy', 0)
+    sadness_score = document_emotion.get('sadness', 0)
 
-        # Determine the dominant emotion
-        # by returning the highest value
-        emotions = {
-            'anger': anger_score,
-            'disgust': digust_score,
-            'fear': fear_score,
-            'joy': joy_score,
-            'sadness': sadness_score
-        }
-        dominant_emotion = max(emotions, key=emotions.get)
+    # Determine the dominant emotion
+    # by returning the highest value
+    emotions = {
+        'anger': anger_score,
+        'disgust': digust_score,
+        'fear': fear_score,
+        'joy': joy_score,
+        'sadness': sadness_score
+    }
+    dominant_emotion = max(emotions, key=emotions.get)
 
-    
-        # Return the response text from the API
-        return {'anger': anger_score, 
-                'disgust': disgust_score,
-                'fear': fear_score,
-                'sadness': sadness_score,
-                'dominant_emotion_': dominant_emotion
-       }
+    # Return the response text from the API
+    return {
+        'anger': anger_score, 
+        'disgust': disgust_score,
+        'fear': fear_score,
+        'sadness': sadness_score,
+        'dominant_emotion_': dominant_emotion
+    }
     
