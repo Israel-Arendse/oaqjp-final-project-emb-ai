@@ -18,19 +18,38 @@ def emotion_detector(text_to_analyze):
 
     # Parse the JSON response
     formatted_response = json.loads(response.text)
-
-    # Extract the emotions from the dictionary
-    anger_score = formatted_response['documentEmotion']['anger']
-    disgust_score = formatted_response['documentEmotion']['disgust']
-    fear_score = formatted_response['documentEmotion']['fear']
-    joy_score = formatted_response['documentEmotion']['joy']
-    sadness_score = formatted_response['documentEmotion']['sadness']
+    print(formatted_response) # Print the entire response
     
-    # Return the response text from the API
-    return {'anger': anger_score, 
-            'disgust': disgust_score,
-            'fear': fear_score,
-            'sadness': sadness_score,
-            'dominant_emotion_': '<name_of_the_dominant_emotion>'
-           }
+    # Extract the 'documentEmotion' if it exists
+    document_emotion = formatted_response.get('documentEmotion')
+    if document_emotion is None:
+       print("Key 'documentEmotion' is not found in the response.")
+       return {}
+    else:
+        # Extract the emotions from the dictionary
+        anger_score = document_emotion.get('anger', 0)
+        disgust_score = document_emotion.get('disgust', 0)
+        fear_score = document_emotion.get('fear', 0)
+        joy_score = document_emotion.get('joy', 0)
+        sadness_score = document_emotion.get('sadness', 0)
 
+        # Determine the dominant emotion
+        # by returning the highest value
+        emotions = {
+            'anger': anger_score,
+            'disgust': digust_score,
+            'fear': fear_score,
+            'joy': joy_score,
+            'sadness': sadness_score
+        }
+        dominant_emotion = max(emotions, key=emotions.get)
+
+    
+        # Return the response text from the API
+        return {'anger': anger_score, 
+                'disgust': disgust_score,
+                'fear': fear_score,
+                'sadness': sadness_score,
+                'dominant_emotion_': dominant_emotion
+       }
+    
