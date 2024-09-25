@@ -15,7 +15,7 @@ class test_emotion_detection(unittest.TestCase):
       
       # Test case for dominant emotion: anger
       # The dominant emotion is anger when 'I am really mad about this' is sent as input.
-      test_2 = emotion_detector('I am glad this happend')
+      test_2 = emotion_detector('I am really mad about this')
       self.assertEqual(test_2['emotion'], 'anger')
 
       # Test case for dominant emotion: disgust
