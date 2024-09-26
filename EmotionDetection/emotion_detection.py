@@ -18,7 +18,7 @@ def emotion_detector(text_to_analyze):
 
     # Parse the JSON response
     formatted_response = json.loads(response.text)
-
+    
     # Extract the emotions from the nested structure
     if 'emotionPredictions' in formatted_response and len(formatted_response['emotionPredictions']) > 0:
         emotions = formatted_response['emotionPredictions'][0]['emotion']
@@ -37,6 +37,12 @@ def emotion_detector(text_to_analyze):
             'sadness': sadness_score
         }
         dominant_emotion = max(emotion_scores, key=emotion_scores.get)
+
+    else:
+        # If the response status code is 400, the values are None
+        if response.status_code == 400:
+            emotions = None
+            emotion_scores = None
         
         # Return the formatted response
         return {
