@@ -22,23 +22,23 @@ def emotion_detector():
         "fear", "joy" and "sadness" along with their respective scores, 
         as well as the "dominant emotion."
     '''   
-   # Retrieve the detected emotion from the text in the request argument.
-   detect_emotion = requests.args.get('DetectEmotion')
+    # Retrieve the detected emotion from the text in the request argument.
+    detect_emotion = requests.args.get('DetectEmotion')
 
-   # Pass the text to the emotion_detector function and store the response.
-   response = emotion_detector(detect_emotion)
+    # Pass the text to the emotion_detector function and store the response.
+    response = emotion_detector(detect_emotion)
 
-   # Extract the emotional scores and dominant emotion from the response.
-   anger_score = response ['anger', 0]
-   digust_score = response ['disgust', 0]
-   fear_score = response['fear', 0]
-   joy_score = response['joy', 0]
-   sadness_score = response['sadness', 0]
-   dominant_emotion = response['dominant_emotion']
+    # Extract the emotional scores and dominant emotion from the response.
+    anger_score = response ['anger', 0]
+    digust_score = response ['disgust', 0]
+    fear_score = response['fear', 0]
+    joy_score = response['joy', 0]
+    sadness_score = response['sadness', 0]
+    dominant_emotion = response['dominant_emotion']
 
-   # Returns a formatted string with the emotional_scores and dominant emotion.
-   return f"For the given statement, the system response is  {anger_score}, {disgust_score},
-         {fear_score}, {joy_score} and {sadness_score}. The dominant emotion is {dominant_emotion}."
+    # Returns a formatted string with the emotional_scores and dominant emotion.
+    return f"For the given statement, the system response is  {anger_score}, {disgust_score},
+            {fear_score}, {joy_score} and {sadness_score}. The dominant emotion is {dominant_emotion}."
 
 # Renders index page
 @app.route("/")
