@@ -38,8 +38,8 @@ def emotion_detector_path():
 
     # Returns a formatted string with the emotional_scores and dominant emotion.
     return (f"For the given statement, the system response is:\n"
-            f"Anger: {anger_score}, Disgust: {disgust_score}," 
-            f"Fear: {fear_score}, Joy: {joy_score}, Sadness: {sadness_score}.\n" 
+            f"'anger': {anger_score}, 'disgust': {disgust_score}, \n" 
+            f"'fear': {fear_score}, 'joy': {joy_score}, 'sadness': {sadness_score}.\n" 
             f"The dominant emotion is {dominant_emotion}.")
 
 # Renders index page
