@@ -37,8 +37,8 @@ def emotion_detector():
     dominant_emotion = response['dominant_emotion']
 
     # Returns a formatted string with the emotional_scores and dominant emotion.
-    return f"For the given statement, the system response is  {anger_score}, {disgust_score},
-            {fear_score}, {joy_score} and {sadness_score}. The dominant emotion is {dominant_emotion}."
+    return (f"For the given statement, the system response is  {anger_score}, {disgust_score}, +
+           {fear_score}, {joy_score} and {sadness_score}. The dominant emotion is {dominant_emotion}.")
 
 # Renders index page
 @app.route("/")
