@@ -15,7 +15,7 @@ app = Flask("Emotion Detection")
 # App route to call the emotion_detector function
 # Sends a GET request to the HTML interface to receive the input text.
 @app.route("/emotionDetector")
-def emotion_detector():
+def emotion_detector_path():
     ''' This code receives the text from the HTML interface and
         runs emotion detection over it via emotion_detection()
         function. The output shows the emotions, "anger", "disgust",
@@ -29,16 +29,17 @@ def emotion_detector():
     response = emotion_detector(detect_emotion)
 
     # Extract the emotional scores and dominant emotion from the response.
-    anger_score = response ['anger', 0]
-    digust_score = response ['disgust', 0]
-    fear_score = response['fear', 0]
-    joy_score = response['joy', 0]
-    sadness_score = response['sadness', 0]
+    anger_score = response['anger']
+    disgust_score = response['disgust']
+    fear_score = response['fear']
+    joy_score = response['joy']
+    sadness_score = response['sadness']
     dominant_emotion = response['dominant_emotion']
 
     # Returns a formatted string with the emotional_scores and dominant emotion.
-    return (f"For the given statement, the system response is"
-            f"{anger_score}, {disgust_score}, + {fear_score}, {joy_score} and {sadness_score}." 
+    return (f"For the given statement, the system response is:\n"
+            f"Anger: {anger_score}, Disgust: {disgust_score}," 
+            f"Fear: {fear_score}, Joy: {joy_score}, Sadness: {sadness_score}.\n" 
             f"The dominant emotion is {dominant_emotion}.")
 
 # Renders index page
