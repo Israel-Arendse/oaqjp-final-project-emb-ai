@@ -38,12 +38,6 @@ def emotion_detector(text_to_analyze):
         }
         dominant_emotion = max(emotion_scores, key=emotion_scores.get)
 
-    else:
-        # If the response status code is 400, the values are None
-        if response.status_code == 400:
-            emotions = None
-            emotion_scores = None
-        
         # Return the formatted response
         return {
             'anger': anger_score, 
@@ -53,8 +47,21 @@ def emotion_detector(text_to_analyze):
             'sadness': sadness_score,
             'dominant_emotion': dominant_emotion
         }
-      # If there are no emotion predictions in the response.
+
     else:
-        print("No emotion predictions found in the response.")
-        return {}
+        # If the response status code is 400, the values are None
+        if response.status_code == 400:
+            print("Error 400: Bad Request. Please check the input text.")
+            return {
+                'anger': None,
+                'disgust': None,
+                'fear': None,
+                'joy': None,
+                'sadness': None,
+                'dominant_emotion': None
+            }
+        # else statement
+        else: 
+            print("No emotion predictions found in the response.")
+            return {}
     
