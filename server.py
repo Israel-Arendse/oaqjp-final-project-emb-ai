@@ -43,7 +43,7 @@ def emotion_detector():
 
 # Renders index page
 @app.route("/")
-def render_index_page() # Runs the 'render_template' function in the 'index.html' template.
+def render_index_page(): # Runs the 'render_template' function in the 'index.html' template.
     '''This function renders the index_page of the main app
          over the flask Channel
     '''
