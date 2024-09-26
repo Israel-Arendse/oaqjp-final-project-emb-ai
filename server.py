@@ -23,7 +23,7 @@ def emotion_detector():
         as well as the "dominant emotion."
     '''   
     # Retrieve the detected emotion from the text in the request argument.
-    detect_emotion = requests.args.get('DetectEmotion')
+    detect_emotion = request.args.get('textToAnalyze')
 
     # Pass the text to the emotion_detector function and store the response.
     response = emotion_detector(detect_emotion)
