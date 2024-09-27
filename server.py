@@ -20,8 +20,9 @@ def emotion_detector_path():
         runs emotion detection over it via emotion_detection()
         function. The output shows the emotions, "anger", "disgust",
         "fear", "joy" and "sadness" along with their respective scores, 
-        as well as the "dominant emotion."
-    '''   
+        as well as the "dominant emotion. If there is a blank entry, 
+        the message "Invalid input! Try again." is return.
+    '''
     # Retrieve the detected emotion from the text in the request argument.
     detect_emotion = request.args.get('textToAnalyze')
 
