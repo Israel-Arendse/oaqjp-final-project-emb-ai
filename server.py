@@ -36,6 +36,10 @@ def emotion_detector_path():
     sadness_score = response['sadness']
     dominant_emotion = response['dominant_emotion']
 
+    # Check if there is dominant_emotion is None.
+    if dominant_emotion is None:
+        return "Invalid input! Try again.,"
+
     # Returns a formatted string with the emotional_scores and dominant emotion.
     return (f"For the given statement, the system response is:\n"
             f"'anger': {anger_score}, 'disgust': {disgust_score}, \n" 
