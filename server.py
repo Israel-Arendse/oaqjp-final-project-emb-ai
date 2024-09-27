@@ -38,7 +38,7 @@ def emotion_detector_path():
 
     # Check if there is dominant_emotion is None.
     if dominant_emotion is None:
-        return "Invalid input! Try again.,"
+        return "Invalid input! Try again."
 
     # Returns a formatted string with the emotional_scores and dominant emotion.
     return (f"For the given statement, the system response is:\n"
