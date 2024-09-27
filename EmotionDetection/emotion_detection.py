@@ -51,7 +51,7 @@ def emotion_detector(text_to_analyze):
     else:
         # If the response status code is 400, the values are None
         if response.status_code == 400:
-            print("Error 400: Bad Request. Please check the input text.")
+            print("HTTP 400: Bad Request. Please check the input text.")
             return {
                 'anger': None,
                 'disgust': None,
